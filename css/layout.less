@@ -1,0 +1,42 @@
+@colcount:12;
+*{
+    margin:0;
+    padding:0;
+}
+
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+
+.row:after{
+    content: "";
+    display: block;
+    clear:both;
+}
+.container{
+    width:1000px;
+    margin:0 auto;
+    padding:0 15px;
+    box-sizing: border-box;
+    position: relative;
+}
+.row{
+    margin:0 -15px;
+} 
+[class^="col-"]{
+   float:left;
+   padding:0 15px;
+   box-sizing: border-box;
+}
+
+.loopcreatecol(@i) when(@i<@colcount+1){
+    .col-@{i}{
+        width: 100%/@colcount*@i;
+    }
+    .loopcreatecol(@i+1);
+}
+
+.loopcreatecol(1);
